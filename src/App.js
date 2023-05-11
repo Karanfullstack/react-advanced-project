@@ -27,6 +27,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    // Initialization 
       {/*<Header />*/}
       <Routes>
         <Route path="/" element={<Home />} />
