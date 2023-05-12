@@ -2,19 +2,18 @@ import React, {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import {useFetch} from "../../../hooks/useFetch";
 import {useSelector} from "react-redux";
+import {ContentWrapper} from "../../../components/contentWrapper/ContentWrapper";
+import {Img} from "../../../components/lazyLoaderImage/Img";
 import "./style.scss";
 
 const HeroBanner = () => {
   const {url} = useSelector((state) => state.home);
-
   const [background, setBackground] = useState("");
-
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
   // @Data Fetch From Custom Hook
   const {data, loading} = useFetch("/movie/upcoming");
-
   // @Code For Random Background Path and set to Background State
   useEffect(() => {
     const bg =
@@ -29,26 +28,33 @@ const HeroBanner = () => {
       navigate(`/search/${query}`);
     }
   };
-
+  console.log(query);
   return (
     <div className="heroBanner">
-      <div className="wrapper">
-        <div className="heroBanner">
+      {!loading && (
+        <div className="backdrop-img">
+          <Img src={background} />
+        </div>
+        
+      )}
+      <div className="opacity-layer"></div>
+      <ContentWrapper>
+        <div className="heroBannerContent">
           <span className="title">Welcome</span>
           <span className="subTitle">
-            Millions of movies, TV shows and people to discover Explore now
+            Millions of movies, TV shows and people to discover. Explore now.
           </span>
           <div className="searchInput">
             <input
               type="text"
-              placeholder="Search for a movie or tv show..."
               onKeyUp={searchQueryHandler}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(event) => setQuery(event.target.value)}
+              pattern="Search for a Movie or TV show.."
             />
             <button>Search</button>
           </div>
         </div>
-      </div>
+      </ContentWrapper>
     </div>
   );
 };
