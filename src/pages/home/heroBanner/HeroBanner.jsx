@@ -21,35 +21,34 @@ const HeroBanner = () => {
       data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;
     setBackground(bg);
   }, [data]);
-  console.log(background);
+
   // @ForSearchQuery and Navigate to Search Page
   const searchQueryHandler = (event) => {
     if (event.key === "Enter" && query.length > 0) {
       navigate(`/search/${query}`);
     }
   };
-  console.log(query);
+
   return (
     <div className="heroBanner">
       {!loading && (
         <div className="backdrop-img">
           <Img src={background} />
         </div>
-        
       )}
       <div className="opacity-layer"></div>
       <ContentWrapper>
         <div className="heroBannerContent">
           <span className="title">Welcome</span>
           <span className="subTitle">
-            Millions of movies, TV shows and people to discover. Explore now.
+            Millions of movies, TV shows and people to discover. Explore now
           </span>
           <div className="searchInput">
             <input
               type="text"
               onKeyUp={searchQueryHandler}
               onChange={(event) => setQuery(event.target.value)}
-              pattern="Search for a Movie or TV show.."
+              placeholder="Search for a Movie or TV show.."
             />
             <button>Search</button>
           </div>
