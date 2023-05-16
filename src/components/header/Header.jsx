@@ -15,17 +15,38 @@ const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(query);
 
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  const controlNavbar = () => {
+    if (window.scrollY > 200 && !mobileMenu) {
+      if (window.scrollY > lastScrollY) {
+        setShow("hide");
+      } else {
+        setShow("show");
+      }
+    } else {
+      setShow("top");
+    }
+    setLastScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", controlNavbar);
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, [lastScrollY]);
 
   const searchQueryHandler = (event) => {
-    if (event.key === "Enter" && query.length > 0 || event.key === "Next") {
+    if ((event.key === "Enter" && query.length > 0) || event.key === "Next") {
       navigate(`/search/${query}`);
       setQuery("");
-      setTimeout(()=>{
-        setShowSearch(false)
-      },400)
+      setTimeout(() => {
+        setShowSearch(false);
+      }, 400);
     }
   };
   const openSearch = () => {
@@ -36,6 +57,15 @@ const Header = () => {
     setMobileMenu(true);
     setShowSearch(false);
   };
+  const navigationHandler = (type) => {
+    setShowSearch(false);
+    setMobileMenu(false);
+    if (type === "movie") {
+      navigate("/explore/movie");
+    } else {
+      navigate("/explore/tv");
+    }
+  };
 
   return (
     <React.Fragment>
@@ -45,8 +75,12 @@ const Header = () => {
             <img src={logo} alt="logo" />
           </div>
           <ul className="menuItems">
-            <li className="menuItem">Movies</li>
-            <li className="menuItem">TV Shows</li>
+            <li className="menuItem" onClick={() => navigationHandler("movie")}>
+              Movies
+            </li>
+            <li className="menuItem" onClick={() => navigationHandler("tv")}>
+              TV Shows
+            </li>
             <li className="menuItem">
               <HiOutlineSearch onClick={openSearch} />
             </li>
