@@ -2,7 +2,6 @@
 
 .carousel {
   margin-bottom: 50px;
-
   .contentWrapper {
     position: relative;
   }
@@ -13,13 +12,13 @@
     font-weight: normal;
   }
   .arrow {
-    font-size: 30px;
-    color: black;
+    font-size: 40px;
+    color: aliceblue;
     position: absolute;
     top: 44%;
     transform: translateY(-50%);
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.6;
     z-index: 1;
     display: none;
     @include md {
@@ -85,6 +84,7 @@
     margin-right: -20px;
     margin-left: -20px;
     padding: 0 20px;
+    transition: all 0.2s ease;
     @include md {
       gap: 20px;
       overflow: hidden;
