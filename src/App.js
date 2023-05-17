@@ -14,7 +14,6 @@ import {getGenres} from "./store/homeSlice";
 
 function App() {
   const dispatch = useDispatch();
-  const {url} = useSelector((state) => state.home);
 
   // @Configuration Api to Set Poster Base Path
   useEffect(() => {
@@ -30,6 +29,7 @@ function App() {
         profile: res.images.secure_base_url + "original",
       };
       dispatch(getApiConfiguration(url));
+      console.log(res);
     });
   };
 

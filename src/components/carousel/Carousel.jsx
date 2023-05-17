@@ -13,11 +13,12 @@ import "./style.scss";
 import CircleRating from "../circleRating/CircleRating";
 import Genres from "../genres/Genres";
 
-const Carousel = ({data, loading}) => {
+const Carousel = ({data, loading, endPoint}) => {
   const carouselContainer = useRef();
   const {url} = useSelector((state) => state.home);
   const navigate = useNavigate();
 
+  // ScrollLeft & Right Carousel Function
   const navigation = (dir) => {
     const container = carouselContainer.current;
     const scrollAmount =
@@ -30,6 +31,7 @@ const Carousel = ({data, loading}) => {
     });
   };
 
+  // @Skelton effect
   const skitem = () => {
     return (
       <div className="skeletonItem">
@@ -69,7 +71,13 @@ const Carousel = ({data, loading}) => {
                 ? url.poster + item.poster_path
                 : PosterFallback;
               return (
-                <div key={item.id} className="carouselItem">
+                <div
+                  key={item.id}
+                  className="carouselItem"
+                  onClick={() =>
+                    navigate(`/${item.media_type || endPoint}/${item.id}`)
+                  }
+                >
                   <div className="posterBlock">
                     <Img src={posterUrl} />
 
