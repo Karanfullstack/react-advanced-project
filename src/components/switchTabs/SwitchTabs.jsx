@@ -2,14 +2,14 @@ import React, {useState} from "react";
 import "./style.scss";
 
 const SwitchTabs = ({data, onTabChange}) => {
-  const [selectedTab, setSelectedTab] = useState(0);
-  const [left, setLeft] = useState(0);
+  const [selectedTab, setSelectedTab] = useState(0); // for active class
+  const [left, setLeft] = useState(0); // to move animated background
 
-  const activeTab = (tab, index) => {
+  const activeTab = (tab, index) => { 
     setLeft(index * 100);
-    setTimeout(()=>{
+    setTimeout(() => {
       setSelectedTab(index);
-    },300)
+    }, 300);
     onTabChange(tab, index);
   };
 

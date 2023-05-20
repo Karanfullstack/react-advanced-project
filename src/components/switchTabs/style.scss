@@ -32,7 +32,7 @@
       background-image: var(--gradient);
       position: absolute;
       left: 0;
-      transition: left cubic-bezier(0.88, -0.35, 0.565, 1.35) 0.4s;
+      transition: all ease-out 0.4s;
     }
   }
 }

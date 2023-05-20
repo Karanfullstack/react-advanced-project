@@ -46,7 +46,7 @@ const HeroBanner = () => {
             Millions of movies, TV shows and people to discover. Explore now
           </span>
           <div className="searchInput">
-            <input
+            <input 
               type="text"
               onKeyUp={searchQueryHandler}
               onChange={(event) => setQuery(event.target.value)}

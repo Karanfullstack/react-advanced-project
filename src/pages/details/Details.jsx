@@ -3,6 +3,7 @@ import "./style.scss";
 import {useFetch} from "../../hooks/useFetch";
 import {useParams} from "react-router-dom";
 import DetailsBanner from "./detailsBanner/DetailsBanner";
+import Trending from "../home/trending/Trending";
 
 const Details = () => {
   // const {mediaType, id} = useParams();
