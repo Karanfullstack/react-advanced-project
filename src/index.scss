@@ -52,7 +52,7 @@ body {
       rgba(#193763, 0.5) 60%,
       rgba(#193763, 0)
     );
-    animation: shimmer 2s infinite;
+    animation: shimmer ease-in-out 500ms infinite;
     content: "";
   }
 

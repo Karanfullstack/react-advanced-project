@@ -13,9 +13,10 @@
   @include md {
     font-size: 1.1rem;
   }
+
   &.top {
-    background: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(3.5px);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4.5px);
     -webkit-backdrop-filter: blur(3.5px);
   }
   &.show {
@@ -23,6 +24,7 @@
   }
   &.hide {
     transform: translateY(-60px);
+    transition: all 0.4s ease-in-out;
   }
 
   .contentWrapper {
@@ -55,7 +57,7 @@
         margin-right: 0;
       }
       svg {
-        font-size: 18px;
+        font-size: 22px;
       }
       cursor: pointer;
       &:hover {
@@ -67,6 +69,7 @@
   .mobileMenuItems {
     display: flex;
     align-items: center;
+    transition: all 0.3s ease;
     gap: 20px;
     @include md {
       display: none;
@@ -89,7 +92,7 @@
       width: 100%;
       padding: 20px 0;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      animation: mobileMenu 0.2s ease forwards;
+      animation: mobileMenu 0.2s ease backwards;
       .menuItem {
         font-size: 20px;
         width: 100%;
@@ -112,14 +115,15 @@
     background-color: white;
     position: absolute;
     top: 60px;
-    animation: mobileMenu 0.3s ease;
-
+    animation: searchBar 0.4s ease;
+    border-bottom: 4px solid orangered;
     .searchInput {
       display: flex;
       align-items: center;
       height: 40px;
       margin-top: 10px;
       width: 100%;
+
       svg {
         font-size: 22px;
         flex-shrink: 0;
@@ -127,6 +131,11 @@
         color: black;
         font-weight: bold;
         cursor: pointer;
+        &:hover {
+          color: orangered;
+          font-weight: bold;
+          font-size: 25px;
+        }
       }
       input {
         width: 100%;
@@ -134,16 +143,27 @@
         background-color: white;
         outline: 0;
         border: 0;
-        border-radius: 30px 0 0 30px;
+
         padding: 0 15px;
         font-size: 14px;
+
         @include md {
           height: 60px;
           font-size: 20px;
           padding: 0 30px;
+          border-bottom: 4px solid orangered;
         }
       }
     }
+  }
+}
+
+@keyframes searchBar {
+  50% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 

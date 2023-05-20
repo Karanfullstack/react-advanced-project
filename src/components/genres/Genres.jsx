@@ -9,13 +9,17 @@ const Genres = ({data}) => {
   }
   return (
     <div className="genres">
-      {data.map((g) => {
-        return (
-          <div key={g} className="genre">
-            {genres?.[g].name}
-          </div>
-        );
-      })}
+      <>
+        {data.map((g) => {
+          return (
+            <React.Fragment>
+              <div key={g} className="genre">
+                {genres?.[g]?.name}
+              </div>
+            </React.Fragment>
+          );
+        })}
+      </>
     </div>
   );
 };

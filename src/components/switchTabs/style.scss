@@ -1,7 +1,7 @@
 .switchingTabs {
   height: 34px;
-  background-color: white;
-  border-radius: 20px;
+  background-color: aliceblue;
+  border-radius: 30px;
   padding: 2px;
   color: black;
   .tabItems {
@@ -28,7 +28,7 @@
     .movingBg {
       height: 30px;
       width: 100px;
-      border-radius: 15px;
+      border-radius: 30px;
       background-image: var(--gradient);
       position: absolute;
       left: 0;

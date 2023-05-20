@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import {fetchDataFromApi} from "./utils/api";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {getApiConfiguration} from "./store/homeSlice";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Header from "./components/header/Header";
@@ -16,6 +16,7 @@ function App() {
   const dispatch = useDispatch();
 
   // @Configuration Api to Set Poster Base Path
+
   useEffect(() => {
     fetchApiConfig();
     genresCall();
@@ -29,7 +30,6 @@ function App() {
         profile: res.images.secure_base_url + "original",
       };
       dispatch(getApiConfiguration(url));
-      console.log(res);
     });
   };
 

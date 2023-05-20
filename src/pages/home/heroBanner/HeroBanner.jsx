@@ -14,13 +14,15 @@ const HeroBanner = () => {
 
   // @Data Fetch From Custom Hook
   const {data, loading} = useFetch("/movie/upcoming");
+
   // @Code For Random Background Path and set to Background State
+
   useEffect(() => {
     const bg =
       url.backdrop +
       data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;
     setBackground(bg);
-  }, [data]);
+  }, [data, url]);
 
   // @ForSearchQuery and Navigate to Search Page
   const searchQueryHandler = (event) => {
