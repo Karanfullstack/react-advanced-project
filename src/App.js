@@ -20,7 +20,12 @@ function App() {
   useEffect(() => {
     fetchApiConfig();
     genresCall();
+    testapi();
   }, []);
+
+  const testapi = () => {
+    fetchDataFromApi("/genre/movie/list").then((res) => console.log(res));
+  };
 
   const fetchApiConfig = () => {
     fetchDataFromApi("/configuration").then((res) => {
@@ -41,7 +46,9 @@ function App() {
     endPoints.forEach((url) => {
       promises.push(fetchDataFromApi(`/genre/${url}/list`));
     });
+
     const data = await Promise.all(promises);
+
     data.map(({genres}) => {
       return genres.map((item) => (allGenres[item.id] = item));
     });
