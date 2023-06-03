@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {useFetch} from "../../../hooks/useFetch";
 import {useSelector} from "react-redux";
 import {ContentWrapper} from "../../../components/contentWrapper/ContentWrapper";
-// import Img from "../../../components/lazyLoaderImage/Img"
+import Img from "../../../components/lazyLoaderImage/Img";
 import "./style.scss";
 
 const HeroBanner = () => {
@@ -35,7 +35,7 @@ const HeroBanner = () => {
     <div className="heroBanner">
       {!loading && (
         <div className="backdrop-img">
-          <img src={background} />
+          <Img src={background} />
         </div>
       )}
       <div className="opacity-layer"></div>

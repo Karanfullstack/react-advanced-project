@@ -7,7 +7,7 @@ import "./style.scss";
 import CircleRating from "../circleRating/CircleRating";
 import Genres from "../genres/Genres";
 import PosterFallback from "../../assets/no-poster.png";
-//import Img from "../lazyLoaderImage/Img";
+import Img from "../lazyLoaderImage/Img";
 const MovieCard = ({data, fromSearch, mediaType}) => {
   const {url} = useSelector((state) => state.home);
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const MovieCard = ({data, fromSearch, mediaType}) => {
       onClick={() => navigate(`/${data.media_type || mediaType}/${data.id}`)}
     >
       <div className="posterBlock">
-        <img className="posterImg" src={posterUrl} />
+        <Img className="posterImg" src={posterUrl} />
         {!fromSearch && (
           <React.Fragment>
             <CircleRating rating={data.vote_average.toFixed(1)} />
