@@ -13,7 +13,7 @@ import "./style.scss";
 import CircleRating from "../circleRating/CircleRating";
 import Genres from "../genres/Genres";
 
-const Carousel = ({data, loading, endPoint}) => {
+const Carousel = ({data, loading, endPoint, title}) => {
   const carouselContainer = useRef();
   const {url} = useSelector((state) => state.home);
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Carousel = ({data, loading, endPoint}) => {
     const scrollAmount =
       dir === "left"
         ? container.scrollLeft - (container.offsetWidth + 20)
-        : container.scrollLeft + (container.offsetWidth + 20)
+        : container.scrollLeft + (container.offsetWidth + 20);
     container.scrollTo({
       left: scrollAmount,
       behavior: "smooth",
@@ -48,6 +48,7 @@ const Carousel = ({data, loading, endPoint}) => {
   return (
     <div className="carousel">
       <ContentWrapper>
+        {title && <div className="carouselTitle">{title}</div>}
         <BsFillArrowLeftCircleFill
           className="carouselLeftNav arrow"
           onClick={() => navigation("left")}
