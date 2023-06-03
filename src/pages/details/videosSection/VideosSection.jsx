@@ -9,7 +9,7 @@ import Img from "../../../components/lazyLoaderImage/Img";
 const VideosSection = ({data, loading}) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
- console.log(data?.results);
+
   const loadingSkeleton = () => {
     return (
       <div className="skItem">
@@ -43,7 +43,6 @@ const VideosSection = ({data, loading}) => {
                 </div>
                 <div className="title">{video.name}</div>
               </div>
-              
             ))}
           </div>
         ) : (
